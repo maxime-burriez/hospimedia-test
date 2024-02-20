@@ -16,7 +16,7 @@ module Swapi
             http_method: :get,
             endpoint: character_url
           )
-        end).sort_by { |character| character["mass"].to_i }
+        end).map{|character| character.slice("name", "mass", "homeworld")}.sort_by { |character| character["mass"].to_i }
       end      
 
       private
